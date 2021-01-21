@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "johnsoncodehk.volar",
+    ],
+    "unwantedRecommendations": [
+        "octref.vetur",
+        "znck.vue-language-features",
+    ]
+}
