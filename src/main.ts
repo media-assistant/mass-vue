@@ -1,9 +1,30 @@
 import { createApp } from 'vue';
+import { createServer } from 'miragejs';
+
+import './index.css';
 import App from './App.vue';
-import './css/index.css';
+import { router } from './router';
 
 if (process.env.NODE_ENV === 'development') {
-    // TODO: Create MirageJS server
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    createServer({
+        environment: 'development',
+
+        routes() {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            this.namespace = 'api';
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+            this.get('/radarr/movies', () => {
+                return [
+                    { id: 1, name: 'Inception', year: 2010 },
+                    { id: 2, name: 'Interstellar', year: 2014 },
+                    { id: 3, name: 'Dunkirk', year: 2017 },
+                    { id: 4, name: 'Tenet', year: 2020 }
+                ];
+            });
+        }
+    });
 }
 
-createApp(App).mount('#app');
+createApp(App).use(router).mount('#app');

@@ -1,34 +1,22 @@
 <template>
-    <h1> {{ msg }} </h1>
-
-    <p>
-        <a
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-        >Vite Documentation</a> |
-        <a
-            href="https://v3.vuejs.org/"
-            target="_blank"
-        >Vue 3 Documentation</a>
-    </p>
-    <p>
-        Edit a file to see the Hot Module Replacement in action :D
-    </p>
-    <p>
-        Clicks {{ count }}
-    </p>
-    <p>
-        <button @click="increment">
-            Increment
-        </button>
-    </p>
+    <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+        <div class="flex-shrink-0">
+            <img
+                class="h-12 w-12"
+                src="/assets/images/logo.png"
+                alt="Vue Logo"
+            >
+        </div>
+        <div>
+            <div class="text-xl font-medium text-black">
+                {{ msg }}
+            </div>
+            <p class="text-gray-500">
+                Edit a file to see the Hot Module Replacement in action :D
+            </p>
+        </div>
+    </div>
 </template>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>
 
 <script setup lang="ts">
 import { ref, defineProps } from 'vue';
