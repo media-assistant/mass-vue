@@ -17,5 +17,8 @@
         "src/**/*.vue",
         "shims-tsx.d.ts",
         "shims-vue.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }
