@@ -1,9 +1,13 @@
 <template>
-    <img
-        alt="Vue logo"
-        src="/assets/images/logo.png"
-    >
-    <hello-world msg="Hello Vue 3 + Vite" />
+    <nav>
+        <router-link to="/">
+            Home
+        </router-link>
+        <router-link to="/about">
+            About
+        </router-link>
+    </nav>
+    <router-view />
 </template>
 
 <style>
@@ -16,7 +20,3 @@
     margin-top: 60px;
   }
 </style>
-
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-</script>

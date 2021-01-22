@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
-import App from './App.vue';
 import { createServer } from 'miragejs';
+
+import App from './App.vue';
+import { router } from './router';
 
 if (process.env.NODE_ENV === 'development') {
   createServer({
@@ -21,4 +23,4 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-createApp(App).mount('#app');
+createApp(App).use(router).mount('#app');
