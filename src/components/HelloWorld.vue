@@ -42,5 +42,5 @@ const props = defineProps({
 
 const count = ref(0);
 
-const increment = () => count.value++;
+const increment = (): number => count.value++;
 </script>
