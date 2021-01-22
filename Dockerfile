@@ -10,6 +10,6 @@ USER node
 
 RUN mkdir -p /app/node_modules
 
-EXPOSE 443
+EXPOSE 3000
 
 CMD [ "sh", "-c", "mkdir -p /app/node_modules && npm i && npm run dev" ]

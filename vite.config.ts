@@ -8,7 +8,7 @@ export default defineConfig({
         viteESLint(),
     ],
     server: {
-        port: 443,
+        port: 3000,
         strictPort: true,
         host: 'host.docker.internal',
     },

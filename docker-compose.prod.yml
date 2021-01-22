@@ -1,19 +1,13 @@
 version: "3.7"
 
-services: 
+services:
   mass-vue:
     container_name: mass-vue
     environment:
       - PUID=1000
       - PGID=1000
-    networks: 
-      - traefik_default
     build:
       context: .
       dockerfile: Dockerfile.prod
-    labels: 
-      - traefik.enable=true
-
-networks:
-  traefik_default:
-    external: true
+    ports:
+      - 5000:80
