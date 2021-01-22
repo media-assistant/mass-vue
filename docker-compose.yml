@@ -6,18 +6,10 @@ services:
     user: node
     environment:
       - CHOKIDAR_USEPOLLING=true
-    networks: 
-      - traefik_default
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - .:/app
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.mass-vue.loadbalancer.server.port=443
-      - traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https
-
-networks:
-  traefik_default:
-    external: true
+    ports:
+      - ${PORT:-3000}:443
