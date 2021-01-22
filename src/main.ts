@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import { createServer } from 'miragejs';
 
+import './index.css';
 import App from './App.vue';
 import { router } from './router';
 
