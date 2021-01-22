@@ -9,6 +9,7 @@
     "format-dry": "eslint --ext .ts,.vue ./src/"
   },
   "dependencies": {
+    "miragejs": "^0.1.41",
     "vue": "^3.0.5"
   },
   "devDependencies": {
