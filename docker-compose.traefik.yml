@@ -13,5 +13,12 @@ services:
         APP_PORT: "${APP_PORT}"
     volumes:
       - .:/app
-    ports:
-      - "${APP_PORT}:${APP_PORT}"
+    networks: 
+      - traefik_default
+    labels:
+      - traefik.enable=true
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=${TRAEFIK_PROTOCOL:-https}"
+
+networks:
+  traefik_default:
+    external: true

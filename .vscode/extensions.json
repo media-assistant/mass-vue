@@ -2,6 +2,7 @@
     "recommendations": [
         "johnsoncodehk.volar",
         "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
     ],
     "unwantedRecommendations": [
         "octref.vetur",
