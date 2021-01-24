@@ -8,6 +8,8 @@
         "sourceMap": true,
         "lib": ["esnext", "dom"],
         "types": ["node", "vite/client"],
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
     },
     "include": [
         "src/**/*.ts",
