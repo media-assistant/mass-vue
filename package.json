@@ -8,6 +8,7 @@
     "format-dry": "eslint --ext .ts,.vue ./src/"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "miragejs": "^0.1.41",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
