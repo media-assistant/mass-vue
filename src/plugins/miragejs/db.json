@@ -20,5 +20,9 @@
             "name": "Tenet", 
             "year": 2010
         }
-    ]
+    ],
+    "users": [{ 
+        "id": 1, 
+        "name": "User Name"
+    }]
 }
