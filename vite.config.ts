@@ -2,9 +2,7 @@ import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import ViteESLint from '@ehutch79/vite-eslint';
 import Pages from 'vite-plugin-pages';
-import { VitePWA } from 'vite-plugin-pwa';
-
-const port = parseInt(process.env.APP_PORT); 
+import { VitePWA } from 'vite-plugin-pwa'; 
 
 export default defineConfig({
     plugins: [
@@ -38,7 +36,7 @@ export default defineConfig({
         }),
     ],
     server: {
-        port: port,
+        port: parseInt(process.env.APP_PORT),
         strictPort: true,
         host: 'host.docker.internal',
     },

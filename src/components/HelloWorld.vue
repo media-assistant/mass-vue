@@ -15,10 +15,15 @@
                 Edit a file to see the Hot Module Replacement in action :D
             </p>
         </div>
+        <div @click="increment">
+            {{ count }}
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
+// import { get } from '@/plugins/fetch';
+// import { RADARR_MOVIES } from '@/plugins/miragejs/routes/radarr';
 import { ref, defineProps } from 'vue';
 
 const props = defineProps({
@@ -31,4 +36,8 @@ const props = defineProps({
 const count = ref(0);
 
 const increment = (): number => count.value++;
+
+// onMounted(async (): Promise<void> => {
+//     console.log(await get(RADARR_MOVIES));
+// });
 </script>
