@@ -51,7 +51,7 @@ module.exports = {
 
         // Typescript Rules
         '@typescript-eslint/camelcase': ['off'],
-        '@typescript-eslint/no-unused-vars': ['off'], // Until Volar has support for Script Setup sugar
+        '@typescript-eslint/no-unused-vars': ['off'], // Handled by tsconfig noUnusedLocals
         '@typescript-eslint/explicit-function-return-type': ['error'],
     }
 };

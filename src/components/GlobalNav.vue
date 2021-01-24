@@ -6,9 +6,7 @@
     </nav>
 </template>
 
-<!-- FIXME: @apply rules are being identified as horribly incorrect CSS. Probably want to adjust the rules. -->
-<!-- TODO: Determine whether it's a best practice to style child elements, or to style the element being passed in itself -->
-<style>
+<style lang="postcss" scoped>
 a {
     @apply px-3 py-2 rounded-full text-gray-400 items-center justify-center hover:bg-black hover:bg-opacity-80 hover:text-white;
 }
