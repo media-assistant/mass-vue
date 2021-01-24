@@ -1,9 +1,15 @@
 import { createApp } from 'vue';
 import { createServer } from 'miragejs';
+import routes from 'vite-plugin-pages/client';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import './index.css';
 import App from './App.vue';
-import { router } from './router';
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+});
 
 if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
