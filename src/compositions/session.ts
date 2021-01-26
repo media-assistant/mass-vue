@@ -1,6 +1,7 @@
 import { reactive, toRefs } from 'vue';
 import { get } from '../plugins/fetch';
 import { USER } from '../plugins/fetch/routes/mass-api';
+
 import type { User } from '../types/mass-api';
 
 const store = reactive({

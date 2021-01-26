@@ -4,19 +4,19 @@ import { useRadarrRoutes } from './radarr';
 import { useSessionRoutes } from './mass-api';
 
 // Workaround for types: https://github.com/miragejs/miragejs/issues/720
-const mock_models = {
+const models = {
     users: Model,
     movies: Model,
 };
 
-const mock_factories = { };
+const factories = { };
 
 export const useMirageJS = (): void => {
-    createServer<typeof mock_models, typeof mock_factories>({
+    createServer<typeof models, typeof factories>({
         environment: 'development',
         namespace: 'api',
-        models: mock_models,
-        factories: mock_factories,
+        models: models,
+        factories: factories,
         seeds(server) {
             server.db.loadData(db_data);
         },

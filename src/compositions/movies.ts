@@ -1,6 +1,7 @@
 import { reactive, toRefs } from 'vue';
 import { get } from '../plugins/fetch';
 import { RADARR_MOVIES } from '../plugins/fetch/routes/radarr';
+
 import type { Movie } from '../types/radarr';
 
 const store = reactive({
