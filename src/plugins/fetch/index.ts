@@ -7,7 +7,7 @@ const default_init = {
 
 const prefix = '/api';
 
-export const jsonFetch = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
+const customFetch = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
     init = { ...default_init, ...init };
 
     if (input instanceof Request) {
@@ -26,27 +26,27 @@ export const jsonFetch = async<T>(input: RequestInfo, init?: RequestInit | undef
 };
 
 export const get = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
-    return jsonFetch<T>(input, init);
+    return customFetch<T>(input, init);
 };
 
 export const post = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
-    return jsonFetch<T>(input, { method: 'POST', ...init, });
+    return customFetch<T>(input, { method: 'POST', ...init });
 };
 
 export const put = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
-    return jsonFetch(input, { method: 'PUT', ...init, });
+    return customFetch(input, { method: 'PUT', ...init });
 };
 
 export const patch = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
-    return jsonFetch(input, { method: 'PATCH', ...init, });
+    return customFetch(input, { method: 'PATCH', ...init });
 };
 
 export const del = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
-    return jsonFetch(input, { method: 'DELETE', ...init });
+    return customFetch(input, { method: 'DELETE', ...init });
 };
 
 export const upload = async<T>(input: RequestInfo, form_data: FormData, init?: RequestInit | undefined): Promise<T> => {
-    return jsonFetch(
+    return customFetch(
         input,
         {
             method: 'PUT',
