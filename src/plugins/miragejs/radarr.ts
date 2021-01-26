@@ -1,9 +1,9 @@
 import { Server } from 'miragejs';
-import { RADARR_MOVIES } from '@/plugins/fetch/routes/radarr';
-import { Movie } from '@/types/radarr';
+import DbCollection from 'miragejs/db-collection';
+import { RADARR_MOVIES } from '../../plugins/fetch/routes/radarr';
 
 export const useRadarrRoutes = (server: Server): void => {
-    server.get(RADARR_MOVIES, (schema): Movie[] => {
-        return schema.db.movies.all() as Movie[];
+    server.get(RADARR_MOVIES, (schema): DbCollection => {
+        return schema.db.movies;
     });
 };

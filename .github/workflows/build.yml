@@ -16,4 +16,5 @@ jobs:
           check-latest: true
       - run: cp .env.example .env
       - run: npm ci
+      - run: tsc --project tsconfig.json
       - run: npm run build

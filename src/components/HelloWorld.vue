@@ -23,13 +23,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { get } from '@/plugins/fetch';
+import { get } from '../plugins/fetch';
 
-import { RADARR_MOVIES } from '@/plugins/fetch/routes/radarr';
-import { USER } from '@/plugins/fetch/routes/mass-api';
+import { RADARR_MOVIES } from '../plugins/fetch/routes/radarr';
+import { USER } from '../plugins/fetch/routes/mass-api';
 
-import type { Movie } from '@/types/radarr';
-import type { User } from '@/types/mass-api';
+import type { Movie } from '../types/radarr';
+import type { User } from '../types/mass-api';
 
 const movies = ref([] as Movie[]);
 const user = ref(undefined as User|undefined);

@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "APP_PORT=$(grep APP_PORT .env | cut -d '=' -f2) vite",
     "build": "APP_PORT=$(grep APP_PORT .env | cut -d '=' -f2) vite build",
-    "format": "eslint --fix --ext .ts,.vue ./src/",
-    "format-dry": "eslint --ext .ts,.vue ./src/"
+    "lint": "eslint --fix --ext .ts,.vue ./src/",
+    "lint-dry": "eslint --ext .ts,.vue ./src/"
   },
   "dependencies": {
     "miragejs": "^0.1.41",

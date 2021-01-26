@@ -11,7 +11,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "resolveJsonModule": true,
-        "paths": { "@/*": [ "./src/*" ] }
+        "skipLibCheck": true,
     },
     "include": [
         "src/**/*.ts",
