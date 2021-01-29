@@ -26,4 +26,9 @@
 
 <script setup lang="ts">
 import GlobalNav from './components/GlobalNav.vue';
+import { useSession } from './compositions/session';
+
+const { fetchSessionData } = useSession();
+
+void fetchSessionData();
 </script>

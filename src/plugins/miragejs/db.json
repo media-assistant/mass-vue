@@ -1,0 +1,28 @@
+{ 
+    "movies": [
+        { 
+            "id": 1, 
+            "name": "Inception", 
+            "year": 2010
+        },
+        { 
+            "id": 2, 
+            "name": "Interstellar", 
+            "year": 2012
+        },
+        { 
+            "id": 3, 
+            "name": "Dunkirk", 
+            "year": 2019
+        },
+        { 
+            "id": 4, 
+            "name": "Tenet", 
+            "year": 2020
+        }
+    ],
+    "users": [{ 
+        "id": 1, 
+        "name": "User Name"
+    }]
+}

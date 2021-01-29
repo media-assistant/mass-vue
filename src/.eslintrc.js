@@ -19,8 +19,8 @@ module.exports = {
     ],
     rules: {
         // Eslint rules
-        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-trailing-spaces': [process.env.NODE_ENV === 'production' ? 'error' : 'warn'],
         'camelcase': 'off',
         'quotes': ['error', 'single'],
@@ -53,5 +53,6 @@ module.exports = {
         '@typescript-eslint/camelcase': ['off'],
         '@typescript-eslint/no-unused-vars': ['off'], // Handled by tsconfig noUnusedLocals
         '@typescript-eslint/explicit-function-return-type': ['error'],
+        '@typescript-eslint/comma-dangle': ['error', 'only-multiline'],
     }
 };

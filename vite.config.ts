@@ -2,9 +2,11 @@ import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import ViteESLint from '@ehutch79/vite-eslint';
 import Pages from 'vite-plugin-pages';
-import { VitePWA } from 'vite-plugin-pwa';
+import { VitePWA } from 'vite-plugin-pwa'; 
+import gzipPlugin from 'rollup-plugin-gzip';
 
-const port = parseInt(process.env.APP_PORT); 
+// Uncomment to view bundles when running `npm run build`
+// import analyze from 'rollup-plugin-analyzer';
 
 export default defineConfig({
     plugins: [
@@ -38,8 +40,17 @@ export default defineConfig({
         }),
     ],
     server: {
-        port: port,
+        port: parseInt(process.env.APP_PORT),
         strictPort: true,
         host: 'host.docker.internal',
     },
+    build: {
+        rollupOptions: {
+            plugins: [
+                gzipPlugin(),
+                // Uncomment to view bundles when running `npm run build`
+                // analyze({summaryOnly: true}),
+            ]
+        }
+    }
 });
