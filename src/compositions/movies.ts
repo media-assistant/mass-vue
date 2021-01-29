@@ -15,10 +15,11 @@ const fetchMovies = async (): Promise<void> => {
     store.loading = false;
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types
-export const useMovies = () => {
-    return {
-        ...toRefs(store),
-        fetchMovies,
-    };
+const use_movies = {
+    ...toRefs(store),
+    fetchMovies,
+};
+
+export const useMovies = (): typeof use_movies => {
+    return use_movies;
 };

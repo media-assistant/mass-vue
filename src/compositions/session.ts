@@ -12,10 +12,11 @@ const fetchSessionData = async (): Promise<void> => {
     store.user = await get<User>(USER);
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types
-export const useSession = () => {
-    return {
-        ...toRefs(store),
-        fetchSessionData,
-    };
+const use_session = {
+    ...toRefs(store),
+    fetchSessionData
+};
+
+export const useSession = (): typeof use_session => {
+    return use_session;
 };
