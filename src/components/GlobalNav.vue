@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed top-0 w-screen flex items-center justify-center p-3 mx-auto my-0">
+    <nav class="absolute top-0 w-screen flex items-center justify-center p-3 mx-auto my-0">
         <div class="flex items-center justify-evenly flex-wrap flex-auto max-w-xl">
             <slot />
         </div>
