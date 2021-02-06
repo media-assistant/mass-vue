@@ -1,5 +1,7 @@
 <template>
-    <div class="p-6 max-w-sm mx-auto mt-32 bg-white rounded-xl shadow-md flex items-center space-x-4">
+    <div
+        class="p-6 max-w-sm mx-auto mt-32 bg-white rounded-xl shadow-md flex items-center space-x-4"
+    >
         <div class="grid grid-flow-row">
             <h1 class="text-3xl mb-4">
                 Movies
@@ -21,16 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import { useMovies } from '../compositions/movies';
 
-const {
-    movies,
-    loading,
-    fetchMovies
-} = useMovies();
-
-onMounted(() => {
-    void fetchMovies();
-});
+const { movies, loading } = useMovies();
 </script>
