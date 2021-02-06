@@ -7,7 +7,7 @@ import { useMirageJS } from './plugins/miragejs';
 import './index.css';
 import App from './App.vue';
 
-const router = createRouter({
+export const router = createRouter({
     history: createWebHistory(),
     routes
 });

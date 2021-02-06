@@ -23,6 +23,18 @@
             "name": "Tenet", 
             "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
             "year": 2020
+        },
+        { 
+            "id": 5, 
+            "name": "The Lion King", 
+            "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg",
+            "year": 2019
+        },
+        { 
+            "id": 6, 
+            "name": "The Rise of Skywalker", 
+            "poster": "https://i.kym-cdn.com/photos/images/newsfeed/001/555/890/09e.jpg",
+            "year": 2019
         }
     ],
     "users": [{ 
