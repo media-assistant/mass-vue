@@ -14,8 +14,8 @@ export default defineConfig({
         ViteESLint(),
         Pages({
             // Load index page sync and bundled with the landing page to improve first loading time:
-            importMode(path: string) {
-                return path === '/src/pages/index.vue' ? 'sync' : 'async'
+            importMode() {
+                return 'sync';
             },
             extensions: ['vue'],
         }),
