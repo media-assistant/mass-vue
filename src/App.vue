@@ -1,5 +1,5 @@
 <template>
-    <global-nav>
+    <global-nav v-if="show_menu">
         <router-link
             to="/"
         >
@@ -25,18 +25,28 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed, watch } from 'vue';
+import router from './plugins/router';
+import { LOGIN } from './plugins/fetch/routes/mass-api';
+import { useSession } from './compositions/session';
 
 import GlobalNav from './components/GlobalNav.vue';
-import { useSession } from './compositions/session';
-import { useMovies } from './compositions/movies';
 
-const { fetchMovies } = useMovies();
-const { fetchSessionData } = useSession();
+const { token, fetchSessionData } = useSession();
 
-void fetchSessionData();
+if (token.value === undefined) {
+    void router.replace(LOGIN);
+}
 
-onMounted(() => {
-    void fetchMovies();
+watch(() => token.value, (): void => {
+    if (token.value !== undefined) {
+        void fetchSessionData();
+    }
+}, { immediate: true });
+
+const show_menu = computed(() => {
+    const name = router.currentRoute.value.name;
+
+    return name && name !== 'login';
 });
 </script>
