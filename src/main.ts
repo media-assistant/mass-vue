@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import routes from 'vite-plugin-pages/client';
 import { createRouter, createWebHistory } from 'vue-router';
+
 import { useMirageJS } from './plugins/miragejs';
 
 import './index.css';
