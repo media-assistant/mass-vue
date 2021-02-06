@@ -1,0 +1,32 @@
+{ 
+    "movies": [
+        { 
+            "id": 1, 
+            "name": "Inception", 
+            "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+            "year": 2010
+        },
+        { 
+            "id": 2, 
+            "name": "Interstellar", 
+            "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+            "year": 2012
+        },
+        { 
+            "id": 3, 
+            "name": "Dunkirk", 
+            "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ebSnODDg9lbsMIaWg2uAbjn7TO5.jpg",
+            "year": 2019
+        },
+        { 
+            "id": 4, 
+            "name": "Tenet", 
+            "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
+            "year": 2020
+        }
+    ],
+    "users": [{ 
+        "id": 1, 
+        "name": "User Name"
+    }]
+}

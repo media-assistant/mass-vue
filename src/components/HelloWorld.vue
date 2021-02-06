@@ -1,5 +1,5 @@
 <template>
-    <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+    <div class="p-6 max-w-sm mx-auto mt-32 bg-white rounded-xl shadow-md flex items-center space-x-4">
         <div class="flex-shrink-0">
             <img
                 class="h-12 w-12"
@@ -9,7 +9,7 @@
         </div>
         <div>
             <div class="text-xl font-medium text-black">
-                {{ msg }}
+                Hallo {{ user?.name }}
             </div>
             <p class="text-gray-500">
                 Edit a file to see the Hot Module Replacement in action :D
@@ -19,16 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from 'vue';
+import { useSession } from '../compositions/session';
 
-const props = defineProps({
-    msg: {
-        type: String,
-        required: true,
-    }
-});
-
-const count = ref(0);
-
-const increment = (): number => count.value++;
+const { user } = useSession();
 </script>
