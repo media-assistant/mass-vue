@@ -8,17 +8,19 @@
             v-else
             :key="movie.id"
         >
-            <img
-                :src="movie.poster"
-            >
+            <router-link :to="`/movies/${movie.id}/details`">
+                <img
+                    :src="movie.poster"
+                >
+            </router-link>
         </div>
     </MainPosterList>
 </template>
 
 <script setup lang="ts">
-import MainPosterList from '../components/MainPosterList.vue';
+import MainPosterList from '../../components/MainPosterList.vue';
 
-import { useMovies } from '../compositions/movies';
+import { useMovies } from '../../compositions/movies';
 
 const { movies, loading } = useMovies();
 </script>

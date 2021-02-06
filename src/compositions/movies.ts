@@ -23,3 +23,11 @@ const use_movies = {
 export const useMovies = (): typeof use_movies => {
     return use_movies;
 };
+
+export const useMovie = (idToFind: number): Movie | undefined => store.movies.find(({ id }) => {
+    // FIXME: MirageJS returns strings as integers while the actual API returns a number. We're most likely better off moving away from MirageJS...
+    if (typeof id === 'string') {
+        return parseInt(id) === idToFind;
+    }
+    return id === idToFind;
+});
