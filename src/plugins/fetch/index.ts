@@ -45,7 +45,13 @@ const customFetch = async<T>(input: RequestInfo, init?: RequestInit | undefined)
 };
 
 const responseToError = async (response: Response): Promise<Error> => {
-    const response_errors = (await response.json()) as GenericObject;
+    let response_errors = {} as GenericObject;
+
+    try {
+        response_errors = (await response.json()) as GenericObject;
+    } catch (error) {
+        return new Error(response.statusText);
+    }
     const errors = (response_errors.errors ?? {}) as GenericObject;
 
     let message = String(response_errors.message ?? response.statusText);
