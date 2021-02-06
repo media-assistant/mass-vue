@@ -1,14 +1,29 @@
-const default_init = {
-    // TODO auth token etc.
-    headers: {
-        'Content-Type': 'application/json',
-    },
-} as RequestInit;
+import { useSession } from '../../compositions/session';
+import { GenericObject } from '../../types/object';
+import router from '../router';
+import { LOGIN } from './routes/mass-api';
 
-const prefix = '/api';
+export const api_url = String(import.meta.env.VITE_API_URL);
+
+const prefix = api_url + '/api';
+
+const getDefaults = (): RequestInit => {
+    const { token } = useSession();
+
+    const auth_header = token.value !== undefined ? {
+        'Authorization': `Bearer ${token.value}`
+    } : {};
+
+    return {
+        headers: {
+            'Content-Type': 'application/json',
+            ...auth_header
+        },
+    } as RequestInit;
+};
 
 const customFetch = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {
-    init = { ...default_init, ...init };
+    init = { ...getDefaults(), ...init };
 
     if (input instanceof Request) {
         input = new Request({ ...input, url: prefix + input.url });
@@ -18,11 +33,32 @@ const customFetch = async<T>(input: RequestInfo, init?: RequestInit | undefined)
 
     const response = await fetch(input, init);
 
+    if (response.status === 401) {
+        void router.push(LOGIN);
+    }
+
     if (! response.ok) {
-        throw new Error(response.statusText);
+        throw await responseToError(response);
     }
 
     return response.json().then(data => data as T);
+};
+
+const responseToError = async (response: Response): Promise<Error> => {
+    const response_errors = (await response.json()) as GenericObject;
+    const errors = (response_errors.errors ?? {}) as GenericObject;
+
+    let message = String(response_errors.message ?? response.statusText);
+
+    for (const key of Object.keys(errors)) {
+        message += ' ' + String(errors[key]);
+    }
+
+    return new Error(message);
+};
+
+export const dataToInit = (data: GenericObject): RequestInit => {
+    return { body: JSON.stringify(data) };
 };
 
 export const get = async<T>(input: RequestInfo, init?: RequestInit | undefined): Promise<T> => {

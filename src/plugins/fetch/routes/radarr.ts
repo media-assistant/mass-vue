@@ -1,1 +1,1 @@
-export const RADARR_MOVIES = '/radarr/movies';
+export const RADARR_MOVIES = '/radarr/movie';

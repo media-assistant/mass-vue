@@ -24,5 +24,8 @@
     "users": [{ 
         "id": 1, 
         "name": "User Name"
+    }],
+    "tokens": [{ 
+        "token": "TOKEN"
     }]
 }

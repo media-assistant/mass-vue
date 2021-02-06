@@ -6,6 +6,7 @@ import type { User } from '../types/mass-api';
 
 const store = reactive({
     user: undefined as undefined|User,
+    token: undefined as undefined|string,
 });
 
 const fetchSessionData = async (): Promise<void> => {

@@ -1,5 +1,5 @@
 <template>
-    <global-nav>
+    <global-nav v-if="show_menu">
         <router-link
             to="/"
         >
@@ -25,10 +25,16 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import router from './plugins/router';
+
 import GlobalNav from './components/GlobalNav.vue';
-import { useSession } from './compositions/session';
 
-const { fetchSessionData } = useSession();
+const show_menu = computed(() => {
+    if (router.currentRoute.value.name === 'login') {
+        return false;
+    }
 
-void fetchSessionData();
+    return true;
+});
 </script>
