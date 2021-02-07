@@ -21,7 +21,9 @@
         { 
             "id": 4, 
             "name": "Tenet", 
+            "overview": "Armed with only one word - Tenet - and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
             "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
+            "youTubeTrailerId": "LdOM0x0XDMo",
             "year": 2020
         },
         { 
@@ -33,7 +35,9 @@
         { 
             "id": 6, 
             "name": "The Rise of Skywalker", 
+            "overview": "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
             "poster": "https://i.kym-cdn.com/photos/images/newsfeed/001/555/890/09e.jpg",
+            "youTubeTrailerId": "8Qn_spdM5Zg",
             "year": 2019
         }
     ],
