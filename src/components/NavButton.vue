@@ -16,12 +16,10 @@
 import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 
-const { variant } = defineProps({
+defineProps({
     variant: {
         default: 'default',
         type: String as PropType<'transparent' | 'default'>
     }
 });
-
-console.log(variant);
 </script>
