@@ -19,6 +19,7 @@
             <CTABUttonLink
                 v-if="movie.youTubeTrailerId !== undefined"
                 :href="`https://www.youtube.com/watch?v=${movie.youTubeTrailerId}`"
+                class="mb-6"
                 target="_blank"
             >
                 <Icon :path="mdiPlay" />
@@ -26,6 +27,26 @@
                     Watch trailer
                 </span>
             </CTABUttonLink>
+            <!-- TODO: Extract this to its own component -->
+            <div class="text-sm text-gray-400">
+                <!-- TODO: Fix testdata so below v-ifs aren't needed -->
+                <span
+                    v-if="movie.runtime !== undefined"
+                >{{ movie.runtime }} min</span>
+                <ul
+                    v-if="movie.genres !== undefined"
+                    class="inline-block ml-4"
+                >
+                    <!-- TODO: Show nice dot in between the two genres -->
+                    <li
+                        v-for="genre in movie.genres.slice(0, 2)"
+                        :key="genre"
+                        class="inline-block ml-2"
+                    >
+                        {{ genre }}
+                    </li>
+                </ul>
+            </div>
         </div>
     </HeroSection>
     <Section

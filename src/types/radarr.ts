@@ -1,4 +1,5 @@
 export type Movie = {
+    genres: string[];
     id: number;
     name: string; // FIXME: Should be title
     overview: string;
