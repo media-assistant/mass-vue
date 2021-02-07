@@ -1,9 +1,6 @@
+<template>
+    <Redirect to="/overview" />
+</template>
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { router } from '../main';
-
-onMounted(() => {
-    void router.replace('/overview');
-});
-
+import Redirect from '../components/Redirect.vue';
 </script>
