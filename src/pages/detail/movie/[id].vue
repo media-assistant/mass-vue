@@ -9,10 +9,10 @@
         :src="movie.poster"
     >
         <div class="text-center">
-            <img
-                class="rounded-lg w-2/5 inline-block shadow-xl mb-6"
+            <MoviePoster
+                class="w-2/5 inline-block mb-6"
                 :src="movie.poster"
-            >
+            />
             <h1 class="text-5xl font-bold mb-6">
                 {{ movie.name }}
             </h1>
@@ -27,26 +27,10 @@
                     Watch trailer
                 </span>
             </CTABUttonLink>
-            <!-- TODO: Extract this to its own component -->
-            <div class="text-sm text-gray-400">
-                <!-- TODO: Fix testdata so below v-ifs aren't needed -->
-                <span
-                    v-if="movie.runtime !== undefined"
-                >{{ movie.runtime }} min</span>
-                <ul
-                    v-if="movie.genres !== undefined"
-                    class="inline-block ml-4"
-                >
-                    <!-- TODO: Show nice dot in between the two genres -->
-                    <li
-                        v-for="genre in movie.genres.slice(0, 2)"
-                        :key="genre"
-                        class="inline-block ml-2"
-                    >
-                        {{ genre }}
-                    </li>
-                </ul>
-            </div>
+            <MovieRuntimeTags
+                :runtime="movie.runtime"
+                :genres="movie.genres.slice(0, 2)"
+            />
         </div>
     </HeroSection>
     <Section
@@ -66,6 +50,8 @@ import { mdiChevronLeft, mdiPlay } from '@mdi/js';
 import CTABUttonLink from '../../../components/CTAButtonLink.vue';
 import HeroSection from '../../../components/HeroSection.vue';
 import Icon from '../../../components/Icon.vue';
+import MoviePoster from '../../../components/MoviePoster.vue';
+import MovieRuntimeTags from '../../../components/MovieRuntimeTags.vue';
 import Nav from '../../../components/Nav.vue';
 import NavButton from '../../../components/NavButton.vue';
 import Section from '../../../components/Section.vue';
