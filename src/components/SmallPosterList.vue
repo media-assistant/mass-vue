@@ -3,12 +3,17 @@
         <div v-if="loading">
             Loading...
         </div>
-        <MoviePosterLink
+        <router-link
             v-for="movie of movies"
             v-else
             :key="movie.id"
-            :movie="movie"
-        />
+            :to="`/detail/movie/${movie.id}`"
+        >
+            <MoviePoster
+                size="small"
+                :src="movie.poster"
+            />
+        </router-link>
     </div>
 </template>
 
@@ -21,7 +26,7 @@
 <script setup lang="ts">
 import { useMovies } from '../compositions/movies';
 
-import MoviePosterLink from './MoviePosterLink.vue';
+import MoviePoster from './MoviePoster.vue';
 
 const { movies, loading } = useMovies();
 </script>
