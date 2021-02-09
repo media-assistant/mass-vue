@@ -1,5 +1,7 @@
 <template>
-    <router-view />
+    <main class="bg-white dark:bg-black">
+        <router-view />
+    </main>
 </template>
 
 <script setup lang="ts">

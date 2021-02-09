@@ -3,7 +3,9 @@
         class="wrapper"
         :style="`--background-image: url(${src}); --gradient-cutoff: ${variant === 'compact' ? 40 : 100}%`"
     >
-        <div class="inner pt-24">
+        <div
+            class="inner pt-24 bg-gradient-to-t from-white dark:from-black to-current text-white text-opacity-25 dark:text-black dark:text-opacity-25"
+        >
             <slot />
         </div>
     </section>
@@ -18,7 +20,11 @@
 
 .wrapper > :first-child {
     backdrop-filter: blur(35px);
-    background-image: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,1) var(--gradient-cutoff));
+}
+
+/* FIXME: Workaround for https://github.com/tailwindlabs/tailwindcss/pull/2975 */
+.dark .dark\:text-opacity-25 {
+    --tw-text-opacity: 0.25;
 }
 </style>
 

@@ -13,7 +13,7 @@
                 class="w-2/5 inline-block mb-6"
                 :src="movie.poster"
             />
-            <h1 class="text-5xl font-bold mb-6">
+            <h1 class="text-5xl font-bold mb-6 text-black dark:text-white">
                 {{ movie.name }}
             </h1>
             <CTAButtonLink
