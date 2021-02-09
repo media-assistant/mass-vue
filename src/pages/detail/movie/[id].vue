@@ -16,7 +16,7 @@
             <h1 class="text-5xl font-bold mb-6">
                 {{ movie.name }}
             </h1>
-            <CTABUttonLink
+            <CTAButtonLink
                 v-if="movie.youTubeTrailerId !== undefined"
                 :href="`https://www.youtube.com/watch?v=${movie.youTubeTrailerId}`"
                 class="mb-6"
@@ -26,7 +26,7 @@
                 <span class="mx-1">
                     Watch trailer
                 </span>
-            </CTABUttonLink>
+            </CTAButtonLink>
             <MovieRuntimeTags
                 :runtime="movie.runtime"
                 :genres="movie.genres.slice(0, 2)"
@@ -41,13 +41,19 @@
         </h3>
         <p>{{ movie.overview }}</p>
     </Section>
+    <StickyFooter>
+        <CTAButton>
+            Play movie
+        </CTAButton>
+    </StickyFooter>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { mdiChevronLeft, mdiPlay } from '@mdi/js';
 
-import CTABUttonLink from '../../../components/CTAButtonLink.vue';
+import CTAButton from '../../../components/CTAButton.vue';
+import CTAButtonLink from '../../../components/CTAButtonLink.vue';
 import HeroSection from '../../../components/HeroSection.vue';
 import Icon from '../../../components/Icon.vue';
 import MoviePoster from '../../../components/MoviePoster.vue';
@@ -55,6 +61,7 @@ import MovieRuntimeTags from '../../../components/MovieRuntimeTags.vue';
 import Nav from '../../../components/Nav.vue';
 import NavButton from '../../../components/NavButton.vue';
 import Section from '../../../components/Section.vue';
+import StickyFooter from '../../../components/StickyFooter.vue';
 
 import { useMovie } from '../../../compositions/movies';
 
