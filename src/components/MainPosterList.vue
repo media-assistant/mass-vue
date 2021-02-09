@@ -7,12 +7,14 @@
             <div v-if="loading">
                 Loading...
             </div>
-            <movie-poster-link
+            <router-link
                 v-for="movie of movies"
                 v-else
                 :key="movie.id"
-                :movie="movie"
-            />
+                :to="`/detail/movie/${movie.id}`"
+            >
+                <MoviePoster :src="movie.poster" />
+            </router-link>
         </div>
     </HeroSection>
 </template>
@@ -25,10 +27,9 @@
 
 <script setup lang="ts">
 import HeroSection from './HeroSection.vue';
-import MoviePosterLink from './MoviePosterLink.vue';
+import MoviePoster from './MoviePoster.vue';
 
 import { useMovies } from '../compositions/movies';
-
 
 const { movies, loading } = useMovies();
 </script>
