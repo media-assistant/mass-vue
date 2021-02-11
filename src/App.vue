@@ -5,15 +5,24 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-
+import { onMounted, watch } from 'vue';
+import router from './plugins/router';
+import { LOGIN } from './plugins/fetch/routes/mass-api';
 import { useSession } from './compositions/session';
 import { useMovies } from './compositions/movies';
 
 const { fetchMovies } = useMovies();
-const { fetchSessionData } = useSession();
+const { token, fetchSessionData } = useSession();
 
-void fetchSessionData();
+if (token.value === undefined) {
+    void router.replace(LOGIN);
+}
+
+watch(() => token.value, (): void => {
+    if (token.value !== undefined) {
+        void fetchSessionData();
+    }
+}, { immediate: true });
 
 onMounted(() => {
     void fetchMovies();

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, onMounted } from 'vue';
-import {router} from '../main';
+import router from '../plugins/router';
 
 const { replace, to } = defineProps({
     replace: {
