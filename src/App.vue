@@ -1,37 +1,17 @@
 <template>
-    <global-nav v-if="show_menu">
-        <router-link
-            to="/"
-        >
-            Overview
-        </router-link>
-        <router-link
-            to="/movies"
-        >
-            Movies
-        </router-link>
-        <router-link
-            to="/shows"
-        >
-            Shows
-        </router-link>
-        <router-link
-            to="/settings"
-        >
-            Settings
-        </router-link>
-    </global-nav>
-    <router-view />
+    <main class="bg-white dark:bg-black">
+        <router-view />
+    </main>
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { onMounted, watch } from 'vue';
 import router from './plugins/router';
 import { LOGIN } from './plugins/fetch/routes/mass-api';
 import { useSession } from './compositions/session';
+import { useMovies } from './compositions/movies';
 
-import GlobalNav from './components/GlobalNav.vue';
-
+const { fetchMovies } = useMovies();
 const { token, fetchSessionData } = useSession();
 
 if (token.value === undefined) {
@@ -44,9 +24,7 @@ watch(() => token.value, (): void => {
     }
 }, { immediate: true });
 
-const show_menu = computed(() => {
-    const name = router.currentRoute.value.name;
-
-    return name && name !== 'login';
+onMounted(() => {
+    void fetchMovies();
 });
 </script>

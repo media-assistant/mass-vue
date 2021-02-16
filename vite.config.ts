@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import ViteESLint from '@ehutch79/vite-eslint';
-import Pages from 'vite-plugin-pages';
+import voie from 'vite-plugin-voie';
 import { VitePWA } from 'vite-plugin-pwa'; 
 import gzipPlugin from 'rollup-plugin-gzip';
 
@@ -12,13 +12,7 @@ export default defineConfig({
     plugins: [
         Vue(),
         ViteESLint(),
-        Pages({
-            // Load index page sync and bundled with the landing page to improve first loading time:
-            importMode() {
-                return 'sync';
-            },
-            extensions: ['vue'],
-        }),
+        voie(),
         VitePWA({
             manifest: {
                 name: 'Media Assistant',

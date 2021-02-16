@@ -1,6 +1,6 @@
 <template>
-    <hello-world msg="Hello World" />
+    <Redirect to="/overview" />
 </template>
 <script setup lang="ts">
-import HelloWorld from '../components/HelloWorld.vue';
+import Redirect from '../components/Redirect.vue';
 </script>

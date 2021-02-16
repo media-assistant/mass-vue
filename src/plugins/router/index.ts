@@ -1,4 +1,4 @@
-import routes from 'vite-plugin-pages/client';
+import routes from 'voie-pages';
 import { createRouter, createWebHistory } from 'vue-router';
 
 export default createRouter({
