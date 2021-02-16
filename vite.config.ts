@@ -4,6 +4,7 @@ import ViteESLint from '@ehutch79/vite-eslint';
 import voie from 'vite-plugin-voie';
 import { VitePWA } from 'vite-plugin-pwa'; 
 import gzipPlugin from 'rollup-plugin-gzip';
+import WindiCSS from 'vite-plugin-windicss';
 
 // Uncomment to view bundles when running `npm run build`
 // import analyze from 'rollup-plugin-analyzer';
@@ -13,6 +14,7 @@ export default defineConfig({
         Vue(),
         ViteESLint(),
         voie(),
+        // ...WindiCSS(),
         VitePWA({
             manifest: {
                 name: 'Media Assistant',
