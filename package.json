@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@mdi/js": "^5.9.55",
+    "date-fns": "^2.17.0",
     "miragejs": "^0.1.41",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"

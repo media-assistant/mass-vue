@@ -91,5 +91,51 @@
     }],
     "tokens": [{ 
         "token": "TOKEN"
+    }],
+    "torrents": [{
+        "error": 0,
+        "errorString": "",
+        "eta": -1,
+        "id": 1,
+        "name": "Batman 1",
+        "isFinished": false,
+        "isStalled": false,
+        "leftUntilDone": 1693729232,
+        "percentDone": 0,
+        "queuePosition": 0,
+        "rateDownload": 0,
+        "rateUpload": 0,
+        "sizeWhenDone": 1693729232,
+        "status": 0
+    }, {
+        "error": 0,
+        "errorString": "",
+        "eta": 300,
+        "id": 2,
+        "name": "Batman 2",
+        "isFinished": false,
+        "isStalled": false,
+        "leftUntilDone": 846864616,
+        "percentDone": 0.5,
+        "queuePosition": 0,
+        "rateDownload": 100000,
+        "rateUpload": 10000,
+        "sizeWhenDone": 1693729232,
+        "status": 4
+    }, {
+        "error": 2,
+        "errorString": "This is an error",
+        "eta": -1,
+        "id": 3,
+        "name": "Batman 3",
+        "isFinished": false,
+        "isStalled": false,
+        "leftUntilDone": 846864616,
+        "percentDone": 0.5,
+        "queuePosition": 0,
+        "rateDownload": 0,
+        "rateUpload": 0,
+        "sizeWhenDone": 1693729232,
+        "status": 4
     }]
 }
