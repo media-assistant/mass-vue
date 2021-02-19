@@ -1,4 +1,4 @@
-import { GenericObject } from './object';
+import type { GenericObject } from './object';
 
 export enum TorrentStatus {
     PAUSED = 0,
