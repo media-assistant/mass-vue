@@ -39,7 +39,7 @@ export default defineConfig({
     server: {
         port: parseInt(process.env.APP_PORT),
         strictPort: true,
-        host: 'host.docker.internal',
+        host: process.env.APP_HOST,
     },
     build: {
         rollupOptions: {
