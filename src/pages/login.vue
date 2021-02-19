@@ -51,6 +51,7 @@
         </div>
         <CTAButton
             :disabled="email === '' || password === ''"
+            :is-loading="busy === true"
             @click="login"
         >
             Login
@@ -75,9 +76,11 @@ import type { TokenResponse } from '../types/mass-api';
 const email = ref('');
 const password = ref('');
 const error = ref('');
+const busy = ref(false);
 
 const login = async (): Promise<void> => {
     const { token } = useSession();
+    busy.value = true;
 
     try {
         const response = await post<TokenResponse>(TOKEN, dataToInit({
@@ -91,6 +94,8 @@ const login = async (): Promise<void> => {
         void router.push(HOME);
     } catch (e) {
         error.value = (e as Error).message;
+    } finally {
+        busy.value = false;
     }
 };
 </script>
