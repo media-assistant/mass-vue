@@ -39,8 +39,18 @@
         </div>
     </Section>
     <FixedFooter>
+        <div
+            v-if="error !== ''"
+            class="px-2 py-1 leading-normal text-red-700 bg-red-100 rounded-md mb-2"
+            role="alert"
+        >
+            <p>
+                <strong>Error logging you in: </strong>
+                {{ error }}
+            </p>
+        </div>
         <CTAButton
-            :disabled="email !== '' && password !== ''"
+            :disabled="email === '' || password === ''"
             @click="login"
         >
             Login
