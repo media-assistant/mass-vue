@@ -34,6 +34,7 @@ export default defineConfig({
                 ],
             },
         }),
+        WindiCSS()
     ],
     server: {
         port: parseInt(process.env.APP_PORT),
