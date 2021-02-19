@@ -10,8 +10,8 @@
 
 <style scoped lang="postcss">
 /* TODO: Figure out why on earth adding this animation wont work when loading through tailwind.config.js */
-button.is-loading:not(:disabled):after {
-    @apply bg-blue-200 block h-1 absolute left-0 right-0 bottom-0 p-0;
+button.is-loading:after {
+    @apply bg-current opacity-60 block h-1 absolute left-0 right-0 bottom-0 p-0;
     animation: loading 1s infinite;
     content: '';
 }
