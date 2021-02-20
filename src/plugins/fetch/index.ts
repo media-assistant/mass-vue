@@ -3,7 +3,7 @@ import { GenericObject } from '../../types/object';
 import router from '../router';
 import { LOGIN } from './routes/mass-api';
 
-export const api_url = import.meta.env.SERVER_URL as string | undefined || '';
+export const api_url = import.meta.env.VITE_SERVER_URL as string | undefined || '';
 
 const prefix = api_url + '/api';
 
