@@ -6,13 +6,10 @@ services:
     user: node
     environment:
       CHOKIDAR_USEPOLLING: "true"
-      SERVER_PORT: ${SERVER_PORT:-3000}
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        SERVER_PORT: ${SERVER_PORT:-3000}
     volumes:
       - .:/app
     ports:
-      - ${SERVER_PORT:-3000}:${SERVER_PORT:-3000}
+      - ${SERVER_PORT:-3000}:3000

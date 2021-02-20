@@ -1,7 +1,5 @@
 FROM node:alpine
 
-ARG SERVER_PORT
-
 WORKDIR /app
 COPY . ./
 
@@ -12,6 +10,6 @@ USER node
 
 RUN mkdir -p /app/node_modules
 
-EXPOSE $SERVER_PORT
+EXPOSE 3000
 
 CMD [ "sh", "-c", "mkdir -p /app/node_modules && npm ci && npm run dev" ]

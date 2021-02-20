@@ -34,7 +34,7 @@ export default defineConfig({
         WindiCSS()
     ],
     server: {
-        port: parseInt(process.env.SERVER_PORT),
+        port: 3000,
         strictPort: true,
         host: process.env.SERVER_HOST,
     },
