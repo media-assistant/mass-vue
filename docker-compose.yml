@@ -5,13 +5,14 @@ services:
     container_name: mass-vue
     user: node
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      CHOKIDAR_USEPOLLING: "true"
+      SERVER_PORT: ${SERVER_PORT:-3000}
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        APP_PORT: "${APP_PORT}"
+        SERVER_PORT: ${SERVER_PORT:-3000}
     volumes:
       - .:/app
     ports:
-      - "${APP_PORT}:${APP_PORT}"
+      - ${SERVER_PORT:-3000}:${SERVER_PORT:-3000}
