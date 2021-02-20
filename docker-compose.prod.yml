@@ -10,4 +10,4 @@ services:
       context: .
       dockerfile: Dockerfile.prod
     ports:
-      - 80:80
+      - ${SERVER_PORT:-80}:80
