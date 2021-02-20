@@ -1,10 +1,10 @@
 <template>
     <section
         class="wrapper"
-        :style="`--background-image: url(${src}); --gradient-cutoff: ${variant === 'compact' ? 40 : 100}%`"
+        :style="`--background-image: ${src ? `url(${src})` : 'none'}; --gradient-cutoff: ${variant === 'compact' ? 40 : 100}%`"
     >
         <div
-            class="inner pt-24 bg-gradient-to-t from-white dark:from-black to-current text-white text-opacity-25 dark:text-black dark:text-opacity-25"
+            class="inner h-full pt-24 bg-gradient-to-t from-white dark:from-black to-current text-white text-opacity-25 dark:text-black dark:text-opacity-25"
         >
             <slot />
         </div>
@@ -33,10 +33,7 @@ import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 
 defineProps({
-    src: {
-        type: String,
-        required: true
-    },
+    src: String,
     variant: {
         default: 'default',
         type: String as PropType<'default' | 'compact'>,
