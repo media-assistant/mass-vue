@@ -14,7 +14,6 @@ export default defineConfig({
         Vue(),
         ViteESLint(),
         voie(),
-        // ...WindiCSS(),
         VitePWA({
             manifest: {
                 name: 'Media Assistant',

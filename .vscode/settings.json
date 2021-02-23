@@ -3,4 +3,8 @@
         "source.fixAll.eslint": true
     },
     "volar.tsPlugin": true,
+    "tailwindCSS.includeLanguages": {
+        "vue": "html",
+        "vue-html": "html",
+    },
 }
