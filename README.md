@@ -4,12 +4,18 @@ Front end for [mass-api](https://github.com/media-assistant/mass-api) using Vite
 
 ## Development
 
+### First time setup
+
+```bash
+docker-compose run --rm mass-vue npm ci
+```
+
 ### Vite development server
 
 Run the development server on port 3000 using the command below.
 
 ```bash
-docker-compose up --build
+docker-compose up
 ```
 
 To run commands inside the container (to add/remove dependencies for example), run (in a seperate terminal):
