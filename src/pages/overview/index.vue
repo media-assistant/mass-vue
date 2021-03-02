@@ -35,6 +35,5 @@ const formatDuration = (duration: number): string => dateFnsFormatDuration(
     { format: [ 'days', 'hours', 'minutes', 'seconds' ]}
 );
 
-// TODO interval loading
 void fetchTorrents();
 </script>
