@@ -25,10 +25,10 @@ $ docker-compose up
 One is able to change the development server's behaviour by setting the following environment variables:
 
 ```sh
-DISABLE_MOCKS= #Disables MirageJS mocks. Make sure to leave this unset this to enable mocks.
 SERVER_HOST=localhost #Change the development server's host, defaults to localhost when unset
 SERVER_PORT=3000 #Change the development server's port, defaults to 3000 when unset
-SERVER_URL=mass.my-domain.dev #Change where Vite expects the websocket server. Set this when running behind a proxy such as Traefik
+VITE_API_URL=mass.my-domain.dev #Change where Vite expects the API endpoint where mass-api is running
+VITE_DISABLE_MOCKS= #Disables MirageJS mocks. Make sure to leave this unset this to enable mocks.
 ```
 
 To run commands inside the container (to add/remove dependencies for example), run (in a seperate terminal):
