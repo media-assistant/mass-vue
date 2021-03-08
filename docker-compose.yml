@@ -6,12 +6,12 @@ services:
     image: node:alpine
     user: node
     environment:
-      - CHOKIDAR_USEPOLLING=true
-      - PATH=./node_modules/.bin:$PATH
+      CHOKIDAR_USEPOLLING: "true"
+      PATH: "./node_modules/.bin:$PATH"
     expose: 
-      - ${APP_PORT}
+      - 3000
     ports:
-      - "${APP_PORT}:${APP_PORT}"
+      - "${SERVER_PORT}:3000"
     volumes:
       - .:/app
     working_dir: /app

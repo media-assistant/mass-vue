@@ -2,8 +2,8 @@
   "name": "mass-vue",
   "version": "0.0.0",
   "scripts": {
-    "dev": "APP_PORT=$(grep APP_PORT .env | cut -d '=' -f2) vite",
-    "build": "APP_PORT=$(grep APP_PORT .env | cut -d '=' -f2) vite build",
+    "dev": "vite",
+    "build": "vite build",
     "lint": "eslint --fix --ext .ts,.vue ./src/",
     "lint-dry": "eslint --ext .ts,.vue ./src/"
   },
