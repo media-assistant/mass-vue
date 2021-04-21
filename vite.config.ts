@@ -1,17 +1,17 @@
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import ViteESLint from '@ehutch79/vite-eslint';
-import voie from 'vite-plugin-voie';
+import Voie from 'vite-plugin-voie';
 import { VitePWA } from 'vite-plugin-pwa'; 
 import gzipPlugin from 'rollup-plugin-gzip';
 import WindiCSS from 'vite-plugin-windicss';
-import analyze from 'rollup-plugin-analyzer';
+// import analyze from 'rollup-plugin-analyzer';
 
 export default defineConfig({
     plugins: [
         Vue(),
         ViteESLint(),
-        voie(),
+        Voie(),
         VitePWA({
             manifest: {
                 name: 'Media Assistant',
@@ -42,9 +42,8 @@ export default defineConfig({
         rollupOptions: {
             plugins: [
                 gzipPlugin(),
-            ].concat(process.env.NODE_ENV === 'production' ? [
-                analyze({summaryOnly: true}),
-            ] : [])
+                // analyze({summaryOnly: true}),
+            ],
         }
     }
 });
