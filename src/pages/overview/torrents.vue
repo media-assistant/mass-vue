@@ -6,16 +6,18 @@
         Loading...
     </p>
     <p>
-        <Table
-            :items="torrents"
-            :headers="['name', 'eta', 'down', 'up', 'size']"
-        >
-            <template #tr="{ item }">
-                <td>{{ item.name }}</td>
-                <td>{{ item.eta > 0 ? formatDuration(item.eta) : '?' }}</td>
-                <td>{{ bytesPerSecond(item.rateDownload) }}</td>
-                <td>{{ bytesPerSecond(item.rateUpload) }}</td>
-                <td>{{ byte(item.sizeWhenDone) }}</td>
+        <Table :headers="['name', 'eta', 'down', 'up', 'size']">
+            <template #tbody>
+                <tr
+                    v-for="torrent in torrents"
+                    :key="torrent.id"
+                >
+                    <td>{{ torrent.name }}</td>
+                    <td>{{ torrent.eta > 0 ? formatDuration(torrent.eta) : '?' }}</td>
+                    <td>{{ bytesPerSecond(torrent.rateDownload) }}</td>
+                    <td>{{ bytesPerSecond(torrent.rateUpload) }}</td>
+                    <td>{{ byte(torrent.sizeWhenDone) }}</td>
+                </tr>
             </template>
         </Table>
     </p>

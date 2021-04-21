@@ -1,5 +1,5 @@
 <template>
-    <nav :class="['absolute', 'top-0', 'w-screen', 'flex', 'items-center', 'justify-center', 'p-3', 'mx-auto', 'my-0', 'z-50']">
+    <nav :class="['absolute', 'top-0', 'w-screen', 'flex', 'items-center', 'justify-center', 'p-3', 'mx-auto', 'my-0', 'z-50', 'bg-grey']">
         <div :class="['flex', 'items-center', {'justify-evenly': variant === 'center'}, 'flex-wrap', 'flex-auto', 'max-w-xl']">
             <slot />
         </div>

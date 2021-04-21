@@ -4,14 +4,14 @@
             Loading...
         </div>
         <router-link
-            v-for="movie of movies"
+            v-for="item of items"
             v-else
-            :key="movie.id"
-            :to="`/detail/movie/${movie.id}`"
+            :key="item.id"
+            :to="`/detail/${isMovie(item) ? 'movie' : 'serie'}/${item.id}`"
         >
             <MoviePoster
                 size="small"
-                :src="movie.poster"
+                :src="item.poster"
             />
         </router-link>
     </div>
@@ -24,9 +24,23 @@
 </style>
 
 <script setup lang="ts">
-import { useMovies } from '../compositions/movies';
+import { defineProps } from '@vue/runtime-core';
+import type { PropType } from '@vue/runtime-core';
+import type { Movie } from '../types/radarr';
+import type { Show } from '../types/sonarr';
 
-import MoviePoster from './MoviePoster.vue';
+defineProps({
+    items: {
+        type: Array as PropType<Movie[]|Show[]>,
+        required: true,
+    },
+    loading: {
+        type: Boolean,
+        default: false,
+    },
+});
 
-const { movies, loading } = useMovies();
+import { useItem } from '../compositions/items';
+
+const { isMovie } = useItem();
 </script>

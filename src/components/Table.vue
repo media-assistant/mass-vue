@@ -9,15 +9,7 @@
             </th>
         </thead>
         <tbody>
-            <tr
-                v-for="item in items"
-                :key="item.id"
-            >
-                <slot
-                    name="tr"
-                    :item="item"
-                />
-            </tr>
+            <slot name="tbody" />
         </tbody>
     </table>
 </template>
@@ -35,11 +27,9 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import type { PropType } from 'vue';
-import type { GenericObject } from '../types/object';
 import type { TableHeader } from '../types/components';
 
 defineProps({
-    items: Array as PropType<GenericObject[]>,
     headers: [Array] as PropType<TableHeader[]>,
 });
 

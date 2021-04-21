@@ -3,6 +3,8 @@ import router from '../router';
 import { LOGIN } from './routes/mass-api';
 import type { GenericObject } from '../../types/object';
 
+// TODO Change to VueUse fetch stuff :)
+
 const api_url = import.meta.env.VITE_API_URL as string | undefined || '';
 
 export const prefix = `${window.location.protocol}//${api_url}/api`;
