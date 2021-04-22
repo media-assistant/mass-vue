@@ -1,8 +1,8 @@
 import { createServer, Model } from 'miragejs';
 import * as db_data from './db.json';
+import { prefix } from '../fetch';
 import { useRadarrRoutes } from './radarr';
 import { useSessionRoutes } from './mass-api';
-import { prefix } from '../fetch';
 import { useTransmissionRoutes } from './transmission';
 
 // Workaround for types: https://github.com/miragejs/miragejs/issues/720

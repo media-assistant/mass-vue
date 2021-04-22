@@ -1,1 +1,4 @@
-export type TableHeader = string;
+export type TableHeader = {
+    text: string;
+    value: string;
+};
