@@ -1,20 +1,17 @@
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import ViteESLint from '@ehutch79/vite-eslint';
-import voie from 'vite-plugin-voie';
+import Voie from 'vite-plugin-voie';
 import { VitePWA } from 'vite-plugin-pwa'; 
 import gzipPlugin from 'rollup-plugin-gzip';
 import WindiCSS from 'vite-plugin-windicss';
-
-// Uncomment to view bundles when running `npm run build`
 // import analyze from 'rollup-plugin-analyzer';
 
 export default defineConfig({
     plugins: [
         Vue(),
         ViteESLint(),
-        voie(),
-        // ...WindiCSS(),
+        Voie(),
         VitePWA({
             manifest: {
                 name: 'Media Assistant',
@@ -37,17 +34,16 @@ export default defineConfig({
         WindiCSS()
     ],
     server: {
-        port: parseInt(process.env.APP_PORT),
+        port: 3000,
         strictPort: true,
-        host: process.env.APP_HOST,
+        host: process.env.SERVER_HOST,
     },
     build: {
         rollupOptions: {
             plugins: [
                 gzipPlugin(),
-                // Uncomment to view bundles when running `npm run build`
                 // analyze({summaryOnly: true}),
-            ]
+            ],
         }
     }
 });

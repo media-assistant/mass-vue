@@ -1,11 +1,11 @@
 import { useSession } from '../../compositions/session';
-import { GenericObject } from '../../types/object';
 import router from '../router';
 import { LOGIN } from './routes/mass-api';
+import type { GenericObject } from '../../types/object';
 
-export const api_url = import.meta.env.VITE_API_URL as string | undefined || '';
+const api_url = import.meta.env.VITE_API_URL as string | undefined || '';
 
-const prefix = api_url + '/api';
+export const prefix = `${window.location.protocol}//${api_url}/api`;
 
 const getDefaults = (): RequestInit => {
     const { token } = useSession();

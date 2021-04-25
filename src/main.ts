@@ -5,7 +5,7 @@ import { useMirageJS } from './plugins/miragejs';
 import 'windi.css';
 import App from './App.vue';
 
-if (Number(import.meta.env.VITE_MIRAGE_ENABLED)) {
+if (import.meta.env.DEV && !import.meta.env.VITE_DISABLE_MOCKS) {
     useMirageJS();
 }
 

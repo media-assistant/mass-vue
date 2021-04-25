@@ -4,6 +4,7 @@ COPY ./ /app
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
+ENV NODE_ENV "production"
 
 RUN npm ci --silent
 RUN npm run build

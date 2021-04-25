@@ -3,15 +3,17 @@ version: "3.7"
 services: 
   mass-vue:
     container_name: mass-vue
+    image: node:alpine
     user: node
     environment:
-      - CHOKIDAR_USEPOLLING=true
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        APP_PORT: "${APP_PORT}"
+      CHOKIDAR_USEPOLLING: "true"
+      PATH: "./node_modules/.bin:$PATH"
+      NODE_ENV: "development"
+    expose: 
+      - 3000
+    ports:
+      - "${SERVER_PORT:-3000}:3000"
     volumes:
       - .:/app
-    ports:
-      - "${APP_PORT}:${APP_PORT}"
+    working_dir: /app
+    command: npm run dev
