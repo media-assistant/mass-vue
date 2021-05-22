@@ -63,11 +63,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue';
-import { HOME, TOKEN } from '../plugins/fetch/routes/mass-api';
-import router from '../plugins/router';
+import { ref } from 'vue';
+import { TOKEN } from '../plugins/fetch/routes/mass-api';
 
-import { useFetch } from '../plugins/fetch/index';
+import { json, post } from '../plugins/fetch/index';
 import { useAuth } from '../compositions/auth';
 
 import CTAButton from '../components/CTAButton.vue';
@@ -81,54 +80,18 @@ const password = ref('');
 const error = ref('');
 const busy = ref(false);
 
-const login = (): void => {
-    const {
-        data,
-    } = useFetch<TokenResponse>(TOKEN, {immediate: true}).post({
+const login = async (): Promise<void> => {
+    const data = await post<TokenResponse>(TOKEN, json({
         email: email.value,
         password: password.value,
-    });
+    }));
 
-    watch(() => data.value, (new_value) => {
-        console.log(new_value);
+    // TODO on fail etc?
 
-        if (new_value?.token) {
-            const { token } = useAuth();
-            token.value = new_value?.token;
-        }
-    });
+    if (data.token) {
+        const { token } = useAuth();
+        token.value = data.token;
+    }
 };
-
-// const login = (): void => {
-
-
-
-//     console.log(isFinished.value);
-
-//     watch(() => isFinished.value, () => {
-//         if (!isFinished.value) {
-//             return;
-//         }
-//         console.log(isFinished.value);
-
-//         if (statusCode.value !== 200) {
-//             console.log(data.value);
-//             console.log(data.value?.message);
-
-//             if (data.value !== null) {
-
-//                 error.value = String(data.value.message);
-//             }
-
-//             busy.value = false;
-//             return;
-//         }
-
-//         token.value = data.value?.token;
-
-//         void router.push(HOME);
-//         busy.value = false;
-//     });
-// };
 
 </script>

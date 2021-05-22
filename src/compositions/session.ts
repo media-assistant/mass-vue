@@ -1,14 +1,18 @@
-import { useFetch } from '../plugins/fetch';
+import { reactive, toRefs } from 'vue';
+import { get } from '../plugins/fetch';
 import { USER } from '../plugins/fetch/routes/mass-api';
 import type { User } from '../types/mass-api';
 
-const {
-    data: user,
-    execute: fetchSessionData,
-} = useFetch<User>(USER, { immediate: false });
+const state = reactive({
+    user: null as null|User,
+});
+
+const fetchSessionData = async (): Promise<void> => {
+    state.user = await get<User>(USER);
+};
 
 const use_session = {
-    user,
+    ...toRefs,
     fetchSessionData,
 };
 
