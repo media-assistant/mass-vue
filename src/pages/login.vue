@@ -63,14 +63,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
+import { HOME, TOKEN } from '../plugins/fetch/routes/mass-api';
+import router from '../plugins/router';
+
+import { useFetch } from '../plugins/fetch/index';
+import { useAuth } from '../compositions/auth';
+
 import CTAButton from '../components/CTAButton.vue';
 import Section from '../components/Section.vue';
 import FixedFooter from '../components/FixedFooter.vue';
-import { useSession } from '../compositions/session';
-import { dataToInit, post } from '../plugins/fetch';
-import { HOME, TOKEN } from '../plugins/fetch/routes/mass-api';
-import router from '../plugins/router';
+
 import type { TokenResponse } from '../types/mass-api';
 
 const email = ref('');
@@ -78,24 +81,54 @@ const password = ref('');
 const error = ref('');
 const busy = ref(false);
 
-const login = async (): Promise<void> => {
-    const { token } = useSession();
-    busy.value = true;
+const login = (): void => {
+    const {
+        data,
+    } = useFetch<TokenResponse>(TOKEN, {immediate: true}).post({
+        email: email.value,
+        password: password.value,
+    });
 
-    try {
-        const response = await post<TokenResponse>(TOKEN, dataToInit({
-            email: email.value,
-            password: password.value,
-        }));
+    watch(() => data.value, (new_value) => {
+        console.log(new_value);
 
-        error.value = '';
-        token.value = response.token;
-
-        void router.push(HOME);
-    } catch (e) {
-        error.value = (e as Error).message;
-    } finally {
-        busy.value = false;
-    }
+        if (new_value?.token) {
+            const { token } = useAuth();
+            token.value = new_value?.token;
+        }
+    });
 };
+
+// const login = (): void => {
+
+
+
+//     console.log(isFinished.value);
+
+//     watch(() => isFinished.value, () => {
+//         if (!isFinished.value) {
+//             return;
+//         }
+//         console.log(isFinished.value);
+
+//         if (statusCode.value !== 200) {
+//             console.log(data.value);
+//             console.log(data.value?.message);
+
+//             if (data.value !== null) {
+
+//                 error.value = String(data.value.message);
+//             }
+
+//             busy.value = false;
+//             return;
+//         }
+
+//         token.value = data.value?.token;
+
+//         void router.push(HOME);
+//         busy.value = false;
+//     });
+// };
+
 </script>
