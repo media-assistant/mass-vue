@@ -12,7 +12,7 @@ const fetchSessionData = async (): Promise<void> => {
 };
 
 const use_session = {
-    ...toRefs,
+    ...toRefs(state),
     fetchSessionData,
 };
 

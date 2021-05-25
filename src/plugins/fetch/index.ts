@@ -1,13 +1,15 @@
+import { useAuth } from '../../compositions/auth';
 import { GenericObject } from '../../types/object';
 import router from '../router';
+import { FetchError } from './error';
 import { LOGIN } from './routes/mass-api';
 
 export const api_url = import.meta.env.VITE_API_URL as string | undefined || '';
 
-const prefix = api_url + '/api';
+export const prefix = api_url + '/api';
 
 const getDefaults = (): RequestInit => {
-    const { token } = useSession();
+    const { token } = useAuth();
 
     const auth_header = token.value !== undefined ? {
         'Authorization': `Bearer ${token.value}`
@@ -16,7 +18,7 @@ const getDefaults = (): RequestInit => {
     return {
         headers: {
             'Content-Type': 'application/json',
-            ...auth_header
+            ...auth_header,
         },
     } as RequestInit;
 };
@@ -49,7 +51,7 @@ const responseToError = async (response: Response): Promise<Error> => {
     try {
         response_errors = (await response.json()) as GenericObject;
     } catch (error) {
-        return new Error(response.statusText);
+        return new FetchError(response.status, response.statusText);
     }
     const errors = (response_errors.errors ?? {}) as GenericObject;
 
@@ -59,7 +61,7 @@ const responseToError = async (response: Response): Promise<Error> => {
         message += ' ' + String(errors[key]);
     }
 
-    return new Error(message);
+    return new FetchError(response.status, message);
 };
 
 export const json = (data: GenericObject): RequestInit => {

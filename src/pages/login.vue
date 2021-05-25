@@ -63,8 +63,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { TOKEN } from '../plugins/fetch/routes/mass-api';
+import { onMounted, ref } from 'vue';
+import { HOME, TOKEN } from '../plugins/fetch/routes/mass-api';
 
 import { json, post } from '../plugins/fetch/index';
 import { useAuth } from '../compositions/auth';
@@ -74,24 +74,47 @@ import Section from '../components/Section.vue';
 import FixedFooter from '../components/FixedFooter.vue';
 
 import type { TokenResponse } from '../types/mass-api';
+import { FetchError } from '../plugins/fetch/error';
+import router from '../plugins/router';
+import { useSession } from '../compositions/session';
 
 const email = ref('');
 const password = ref('');
 const error = ref('');
 const busy = ref(false);
 
+const { token } = useAuth();
+
 const login = async (): Promise<void> => {
-    const data = await post<TokenResponse>(TOKEN, json({
-        email: email.value,
-        password: password.value,
-    }));
+    try {
+        const data = await post<TokenResponse>(TOKEN, json({
+            email: email.value,
+            password: password.value,
+        }));
 
-    // TODO on fail etc?
-
-    if (data.token) {
-        const { token } = useAuth();
         token.value = data.token;
+
+        void router.replace(HOME);
+    } catch (fetch_error) {
+        if (fetch_error instanceof FetchError) {
+            error.value = fetch_error.message;
+        } else {
+            throw fetch_error;
+        }
     }
 };
 
+onMounted(async () => {
+    if (token.value) {
+        const { fetchSessionData } = useSession();
+
+        try {
+            await fetchSessionData();
+
+            void router.replace(HOME);
+        } catch (fetch_error) {
+            // Nothing
+        }
+    }
+});
 </script>

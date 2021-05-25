@@ -1,6 +1,6 @@
 <template>
     <MainPosterList
-        :items="movies"
+        :items="shows"
         :loading="loading"
     />
     <Section>
@@ -8,7 +8,7 @@
             Recently added
         </h2>
         <SmallPosterList
-            :items="movies"
+            :items="shows"
             :loading="loading"
         />
     </Section>
@@ -19,7 +19,11 @@ import MainPosterList from '../../components/MainPosterList.vue';
 import SmallPosterList from '../../components/SmallPosterList.vue';
 import Section from '../../components/Section.vue';
 
-import { useMovies } from '../../compositions/movies';
+import { useShows } from '../../compositions/shows';
 
-const { movies, loading } = useMovies();
+const { shows, loading, fetchShows } = useShows();
+
+if (! shows.value.length) {
+    void fetchShows();
+}
 </script>

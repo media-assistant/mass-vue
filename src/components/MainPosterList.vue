@@ -11,7 +11,7 @@
                 v-for="item of items"
                 v-else
                 :key="item.id"
-                :to="`/detail/${isMovie(item) ? 'movie' : 'serie'}/${item.id}`"
+                :to="itemLink(item)"
             >
                 <Poster :src="item.poster" />
             </router-link>
@@ -47,5 +47,5 @@ defineProps({
 
 import { useItem } from '../compositions/items';
 
-const { isMovie } = useItem();
+const { itemLink } = useItem();
 </script>

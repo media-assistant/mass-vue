@@ -1,7 +1,10 @@
 export type Show = {
     id: number;
     tvdb_id: number;
-    name: string; // FIXME: Should be title
+    genres: string[];
+    title: string;
     overview: string;
     poster: string;
+    runtime: number;
+    year: number;
 };

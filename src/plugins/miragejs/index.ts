@@ -2,6 +2,7 @@ import { createServer, Model } from 'miragejs';
 import * as db_data from './db.json';
 import { prefix } from '../fetch';
 import { useRadarrRoutes } from './radarr';
+import { useSonarrRoutes } from './sonarr';
 import { useSessionRoutes } from './mass-api';
 import { useTransmissionRoutes } from './transmission';
 
@@ -27,6 +28,7 @@ export const useMirageJS = (): void => {
         routes() {
             useSessionRoutes(this);
             useRadarrRoutes(this);
+            useSonarrRoutes(this);
             useTransmissionRoutes(this);
         }
     });

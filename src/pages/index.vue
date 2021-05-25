@@ -8,19 +8,19 @@
             Overview
         </NavButton>
         <NavButton
-            to="/overview/movies"
+            to="/movies"
             variant="transparent"
         >
             Movies
         </NavButton>
         <NavButton
-            to="/overview/shows"
+            to="/shows"
             variant="transparent"
         >
             Shows
         </NavButton>
         <NavButton
-            to="/overview/torrents"
+            to="/torrents"
             variant="transparent"
         >
             torrents
