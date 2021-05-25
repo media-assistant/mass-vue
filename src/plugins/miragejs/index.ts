@@ -1,8 +1,9 @@
 import { createServer, Model } from 'miragejs';
 import * as db_data from './db.json';
-import { useRadarrRoutes } from './radarr';
-import { useSessionRoutes } from './mass-api';
 import { prefix } from '../fetch';
+import { useRadarrRoutes } from './radarr';
+import { useSonarrRoutes } from './sonarr';
+import { useSessionRoutes } from './mass-api';
 import { useTransmissionRoutes } from './transmission';
 
 // Workaround for types: https://github.com/miragejs/miragejs/issues/720
@@ -27,6 +28,7 @@ export const useMirageJS = (): void => {
         routes() {
             useSessionRoutes(this);
             useRadarrRoutes(this);
+            useSonarrRoutes(this);
             useTransmissionRoutes(this);
         }
     });

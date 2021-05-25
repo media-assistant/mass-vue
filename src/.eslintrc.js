@@ -3,7 +3,7 @@ module.exports = {
     env: {
         node: true
     },
-    ignorePatterns: ['.eslintrc.js'],
+    ignorePatterns: ['.eslintrc.js', 'db.json'],
     parser: 'vue-eslint-parser',
     parserOptions: {
         parser: '@typescript-eslint/parser',

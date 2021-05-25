@@ -63,39 +63,58 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { HOME, TOKEN } from '../plugins/fetch/routes/mass-api';
+
+import { json, post } from '../plugins/fetch/index';
+import { useAuth } from '../compositions/auth';
+
 import CTAButton from '../components/CTAButton.vue';
 import Section from '../components/Section.vue';
 import FixedFooter from '../components/FixedFooter.vue';
-import { useSession } from '../compositions/session';
-import { dataToInit, post } from '../plugins/fetch';
-import { HOME, TOKEN } from '../plugins/fetch/routes/mass-api';
-import router from '../plugins/router';
+
 import type { TokenResponse } from '../types/mass-api';
+import { FetchError } from '../plugins/fetch/error';
+import router from '../plugins/router';
+import { useSession } from '../compositions/session';
 
 const email = ref('');
 const password = ref('');
 const error = ref('');
 const busy = ref(false);
 
-const login = async (): Promise<void> => {
-    const { token } = useSession();
-    busy.value = true;
+const { token } = useAuth();
 
+const login = async (): Promise<void> => {
     try {
-        const response = await post<TokenResponse>(TOKEN, dataToInit({
+        const data = await post<TokenResponse>(TOKEN, json({
             email: email.value,
             password: password.value,
         }));
 
-        error.value = '';
-        token.value = response.token;
+        token.value = data.token;
 
-        void router.push(HOME);
-    } catch (e) {
-        error.value = (e as Error).message;
-    } finally {
-        busy.value = false;
+        void router.replace(HOME);
+    } catch (fetch_error) {
+        if (fetch_error instanceof FetchError) {
+            error.value = fetch_error.message;
+        } else {
+            throw fetch_error;
+        }
     }
 };
+
+onMounted(async () => {
+    if (token.value) {
+        const { fetchSessionData } = useSession();
+
+        try {
+            await fetchSessionData();
+
+            void router.replace(HOME);
+        } catch (fetch_error) {
+            // Nothing
+        }
+    }
+});
 </script>

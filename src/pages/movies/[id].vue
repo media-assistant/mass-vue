@@ -1,6 +1,6 @@
 <template>
     <Nav>
-        <NavButton to="/overview/movies">
+        <NavButton to="/movies">
             <Icon :path="mdiChevronLeft" />
         </NavButton>
     </Nav>
@@ -14,7 +14,7 @@
                 :src="movie.poster"
             />
             <h1 class="text-5xl font-bold mb-6 text-black dark:text-white">
-                {{ movie.name }}
+                {{ movie.title }}
             </h1>
             <CTAButtonLink
                 v-if="movie.youTubeTrailerId !== undefined"
@@ -52,18 +52,18 @@
 import { defineProps } from 'vue';
 import { mdiChevronLeft, mdiPlay } from '@mdi/js';
 
-import CTAButton from '../../../components/CTAButton.vue';
-import CTAButtonLink from '../../../components/CTAButtonLink.vue';
-import HeroSection from '../../../components/HeroSection.vue';
-import Icon from '../../../components/Icon.vue';
-import MoviePoster from '../../../components/MoviePoster.vue';
-import MovieRuntimeTags from '../../../components/MovieRuntimeTags.vue';
-import Nav from '../../../components/Nav.vue';
-import NavButton from '../../../components/NavButton.vue';
-import Section from '../../../components/Section.vue';
-import StickyFooter from '../../../components/StickyFooter.vue';
+import CTAButton from '../../components/CTAButton.vue';
+import CTAButtonLink from '../../components/CTAButtonLink.vue';
+import HeroSection from '../../components/HeroSection.vue';
+import Icon from '../../components/Icon.vue';
+import MoviePoster from '../../components/Poster.vue';
+import MovieRuntimeTags from '../../components/RuntimeTags.vue';
+import Nav from '../../components/Nav.vue';
+import NavButton from '../../components/NavButton.vue';
+import Section from '../../components/Section.vue';
+import StickyFooter from '../../components/StickyFooter.vue';
 
-import { useMovie } from '../../../compositions/movies';
+import { useMovie } from '../../compositions/movies';
 
 const { id } = defineProps({
     id: {

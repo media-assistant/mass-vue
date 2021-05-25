@@ -1,23 +1,32 @@
 import { reactive, toRefs } from 'vue';
-import { dataToInit, post } from '../plugins/fetch';
-import { TORRENT_GET_DATA, TRANSMISSION_MAIN } from '../plugins/fetch/routes/transmission';
+import { post } from '../plugins/fetch';
+import { getTorrentDeleteData, TORRENT_GET_DATA, TRANSMISSION_MAIN } from '../plugins/fetch/routes/transmission';
 
 import type { Torrent } from '../types/transmission';
 
-const store = reactive({
+const state = reactive({
     torrents: [] as Torrent[],
     loading: false,
 });
 
 const fetchTorrents = async (): Promise<void> => {
-    store.loading = true;
-    store.torrents = await post<Torrent[]>(TRANSMISSION_MAIN, dataToInit(TORRENT_GET_DATA));
-    store.loading = false;
+    state.loading = true;
+
+    state.torrents = await post<Torrent[]>(TRANSMISSION_MAIN, TORRENT_GET_DATA);
+
+    state.loading = false;
+};
+
+const deleteTorrent = async (torrent: Torrent): Promise<void> => {
+    await post(TRANSMISSION_MAIN, getTorrentDeleteData(torrent));
+
+    state.torrents = state.torrents.filter(item => item.id === torrent.id);
 };
 
 const use_torrents = {
-    ...toRefs(store),
+    ...toRefs(state),
     fetchTorrents,
+    deleteTorrent,
 };
 
 export const useTorrents = (): typeof use_torrents => {

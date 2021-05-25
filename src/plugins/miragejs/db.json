@@ -2,12 +2,13 @@
     "movies": [
         { 
             "id": 1, 
+            "tmdb_id": 1,
             "genres": [
                 "Action",
                 "Science Fiction",
                 "Adventure"
             ],
-            "name": "Inception", 
+            "title": "Inception", 
             "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
             "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
             "runtime": 148,
@@ -16,12 +17,13 @@
         },
         { 
             "id": 2, 
+            "tmdb_id": 2,
             "genres": [
                 "Adventure",
                 "Drama",
                 "Science Fiction"
             ],
-            "name": "Interstellar", 
+            "title": "Interstellar", 
             "overview": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
             "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
             "runtime": 169,
@@ -30,12 +32,13 @@
         },
         { 
             "id": 3, 
+            "tmdb_id": 3,
             "genres": [
                 "War",
                 "Action",
                 "Drama"
             ],
-            "name": "Dunkirk", 
+            "title": "Dunkirk", 
             "overview": "The story of the miraculous evacuation of Allied soldiers from Belgium, Britain, Canada and France, who were cut off and surrounded by the German army from the beaches and harbour of Dunkirk between May 26th and June 4th 1940 during World War II.",
             "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ebSnODDg9lbsMIaWg2uAbjn7TO5.jpg",
             "runtime": 107,
@@ -44,12 +47,13 @@
         },
         { 
             "id": 4,
+            "tmdb_id": 4,
             "genres": [
                 "Action",
                 "Thriller",
                 "Science Fiction"
             ],
-            "name": "Tenet", 
+            "title": "Tenet", 
             "overview": "Armed with only one word - Tenet - and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
             "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
             "runtime": 150,
@@ -58,12 +62,13 @@
         },
         { 
             "id": 5, 
+            "tmdb_id": 5,
             "genres": [
                 "Adventure",
                 "Family",
                 "Animation"
             ],
-            "name": "The Lion King", 
+            "title": "The Lion King", 
             "overview": "Simba idolizes his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.",
             "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg",
             "runtime": 118,
@@ -72,12 +77,13 @@
         },
         { 
             "id": 6, 
+            "tmdb_id": 6,
             "genres": [
                 "Action",
                 "Adventure",
                 "Science Fiction"
             ],
-            "name": "The Rise of Skywalker", 
+            "title": "The Rise of Skywalker", 
             "overview": "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
             "poster": "https://i.kym-cdn.com/photos/images/newsfeed/001/555/890/09e.jpg",
             "runtime": 144,
@@ -85,12 +91,28 @@
             "youTubeTrailerId": "8Qn_spdM5Zg"
         }
     ],
+    "shows": [
+        {
+            "id": 1, 
+            "tvdb_id": 1,
+            "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+            ],
+            "title": "Random serie", 
+            "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+            "poster": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+            "runtime": 148,
+            "year": 2010
+        }
+    ],
     "users": [{ 
         "id": 1, 
         "name": "User Name"
     }],
     "tokens": [{ 
-        "token": "TOKEN"
+        "token": "\"TOKEN\""
     }],
     "torrents": [{
         "error": 0,

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import ViteESLint from '@ehutch79/vite-eslint';
-import Voie from 'vite-plugin-voie';
+import Pages from 'vite-plugin-pages';
 import { VitePWA } from 'vite-plugin-pwa'; 
 import gzipPlugin from 'rollup-plugin-gzip';
 import WindiCSS from 'vite-plugin-windicss';
@@ -10,8 +10,13 @@ import WindiCSS from 'vite-plugin-windicss';
 export default defineConfig({
     plugins: [
         Vue(),
-        ViteESLint(),
-        Voie(),
+        ViteESLint(
+            // fixme does not work in prod but should?
+            // {
+            //     fix: import.meta.env.DEV,
+            // }
+        ),
+        Pages(),
         VitePWA({
             manifest: {
                 name: 'Media Assistant',

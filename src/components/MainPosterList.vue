@@ -8,12 +8,12 @@
                 Loading...
             </div>
             <router-link
-                v-for="movie of movies"
+                v-for="item of items"
                 v-else
-                :key="movie.id"
-                :to="`/detail/movie/${movie.id}`"
+                :key="item.id"
+                :to="itemLink(item)"
             >
-                <MoviePoster :src="movie.poster" />
+                <Poster :src="item.poster" />
             </router-link>
         </div>
     </HeroSection>
@@ -26,10 +26,26 @@
 </style>
 
 <script setup lang="ts">
+import { defineProps } from 'vue';
+import type { PropType } from 'vue';
+import type { Movie } from '../types/radarr';
+import type { Show } from '../types/sonarr';
+
 import HeroSection from './HeroSection.vue';
-import MoviePoster from './MoviePoster.vue';
+import Poster from './Poster.vue';
 
-import { useMovies } from '../compositions/movies';
+defineProps({
+    items: {
+        type: Array as PropType<Movie[]|Show[]>,
+        required: true,
+    },
+    loading: {
+        type: Boolean,
+        default: false,
+    },
+});
 
-const { movies, loading } = useMovies();
+import { useItem } from '../compositions/items';
+
+const { itemLink } = useItem();
 </script>
