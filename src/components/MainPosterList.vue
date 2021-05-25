@@ -26,8 +26,8 @@
 </style>
 
 <script setup lang="ts">
-import { defineProps } from '@vue/runtime-core';
-import type { PropType } from '@vue/runtime-core';
+import { defineProps } from 'vue';
+import type { PropType } from 'vue';
 import type { Movie } from '../types/radarr';
 import type { Show } from '../types/sonarr';
 
