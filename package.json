@@ -5,8 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint --fix --ext .ts,.vue ./src/",
-    "lint-dry": "eslint --ext .ts,.vue ./src/",
-    "generate-routes": "vite-plugin-pages generate"
+    "lint-dry": "eslint --ext .ts,.vue ./src/"
   },
   "dependencies": {
     "@ehutch79/vite-eslint": "^0.0.1",
