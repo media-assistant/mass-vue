@@ -15,7 +15,7 @@ const { user, fetchSessionData } = useSession();
 const { token } = useAuth();
 
 if (token.value === undefined && router.currentRoute.value.path !== LOGIN) {
-    await router.replace(LOGIN);
+    void router.replace(LOGIN);
 }
 
 watch(() => token.value, (): void => {
